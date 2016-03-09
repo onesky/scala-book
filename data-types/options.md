@@ -114,7 +114,7 @@ Sometimes we need to use Java-based libraries for our application development. W
 The `Option` data type has a constructor method for converting a possible `null` value to an `Option`:
 
 ```scala
-val nullableValue = foo()
+val nullableValue = javaCall()
 val opt = Option(nullableValue)
 ```
 

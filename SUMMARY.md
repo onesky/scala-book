@@ -2,4 +2,5 @@
 
 * Summary
 * Data Types
+   * Options
 

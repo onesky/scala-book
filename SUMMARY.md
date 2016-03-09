@@ -1,6 +1,6 @@
 # Summary
 
 * Summary
-* Data Types
+* [Data Types](data-types/options.md)
    * Options
 

@@ -45,6 +45,14 @@ if (task !== null) {
 If `task` were encapsulated with the `Option` data type, we may write such expression in:
 
 ```scala
+if (optTask.isDefined) {
+  optTask.get.run()
+}
+```
+
+But that's defeating the purpose of functional programming, and the call to `get()` method is unsafe. Instead you should write:
+
+```scala
 optTask foreach { task =>
   task.run()
 }
@@ -129,6 +137,7 @@ val opt = Option(nullableValue)
 - Use `map()` and `flatMap()` to perform transformation.
 - Use for-comprehension to compose `Option` from `Option`s.
 - Use `Option(value)` constructor to wrap nullable values returned by Java-API.
+- Never use `get()` to retrieve value from `Option`.
 
 ## Reference Materials
 

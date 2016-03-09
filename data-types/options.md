@@ -14,7 +14,7 @@ def foo(shouldReturnNull: Boolean): Something =
   else { new Something() }
 ```
 
-However, this will make subsequent usages of `foo()`'s result become complicated, that requires you to check the existence of `Something` every time, while you may not know you're required to do so.
+Yet, this will make later usages of `foo` become complicated. This requires you to check the existence of `Something` every time, while you may not know you need to do so.
 
 Instead, if you write `foo()` in the following way:
 
@@ -24,7 +24,7 @@ def foo(shouldReturnNone: Boolean): Option[Something] =
   else { Some(new Something()) }
 ```
 
-They looks no difference at all, but with the `Option` container, we may apply many collection's method for manipulating the value inside without knowing `Something`'s existence, or, it explicitly state that `Something` must be checked for emptiness before any further manipulation.
+They looks no difference at all. However, with the `Option` container, we may manipulate the value inside without knowing `Something`'s existence. Or you could say, `Option` explicitly states the checking for emptiness is required for any manipulation.
 
 If you would like to provide a default value to existing `Option`, you should use `getOrElse()` instead of pattern matching:
 
@@ -125,7 +125,7 @@ val opt = Option(nullableValue)
 - Prefer `Option` over `null` for optional values.
 - Use `getOrElse()` to provide default values for missing data.
 - Use `foreach()` to execute side effects on an existing value.
-- Use pattern matching if branching is required.
+- Use pattern matching if you need branching.
 - Use `map()` and `flatMap()` to perform transformation.
 - Use for-comprehension to compose `Option` from `Option`s.
 - Use `Option(value)` constructor to wrap nullable values returned by Java-API.

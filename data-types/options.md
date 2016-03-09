@@ -24,7 +24,7 @@ def foo(shouldReturnNone: Boolean): Option[Something] =
   else { Some(new Something()) }
 ```
 
-They looks no difference at all. However, with the `Option` container, we may manipulate the value inside without knowing `Something`'s existence. Or you could say, `Option` explicitly states the checking for emptiness is required for any manipulation.
+They looks no difference at all. However, with the `Option` container, we may manipulate the value inside without knowing `Something`'s existence. Or you could say, `Option` explicitly states the value requires the checking for emptiness.
 
 If you would like to provide a default value to existing `Option`, you should use `getOrElse()` instead of pattern matching:
 
@@ -42,7 +42,7 @@ if (task !== null) {
 }
 ```
 
-If `task` where encapsulated with the `Option` data type, we may write such expression in:
+If `task` were encapsulated with the `Option` data type, we may write such expression in:
 
 ```scala
 optTask foreach { task =>
@@ -50,9 +50,9 @@ optTask foreach { task =>
 }
 ```
 
-This may looks quite odd at first glance, however, despite it provides better safety to the execution of `run()`, it also makes sense if you consider `Option[Task]` as a collection of tasks, and you would like to `run()` all tasks exist in the collection.
+This may looks quite odd at first glance. However, it provides better safety to the execution of `run()`. And this also makes sense if you consider `Option[Task]` as a collection of tasks, and you would like to `run()` all tasks exist in the collection.
 
-In other cases that you may need to run some default task if the actual task doesn't exist, you can make use of the powerful pattern matching in scala to achieve branching:
+Sometimes, you'll need to run the task or do something else if the task is missing. You can achieve branching with the powerful pattern matching:
 
 ```scala
 optTask match {
@@ -65,7 +65,7 @@ optTask match {
 
 Since `Option` is a collection, we may apply `map()` and `flatMap()` to an `Option` like applying these functions to `List` data type.
 
-In traditional imperative programming, if you want to transform a nullable value to another one, you will write:
+In traditional imperative programming, you'll write the following code to transform a nullable value to another:
 
 ```scala
 def bar(foo: Foo): Bar =
@@ -75,14 +75,14 @@ def bar(foo: Foo): Bar =
 
 This will gives you the result of an instance of `Bar`, if the provided `Foo` value is not `null`.
 
-With the collection API provided by `Option`, such procedure can be changed into:
+With the collection API provided by `Option`, you can turn such procedure into:
 
 ```scala
 def bar(optFoo: Option[Foo]): Option[Bar] =
   optFoo.map { foo => transform(foo) }
 ```
 
-In the imperative example, the very same piece of code can be used if `transform()` is returning a nullable value as well. But let's consider the `Option` example, suppose `transform()` is returning an `Option[Bar]`, using `map()` method will result in `Option[Option[Bar]]` instead of `Option[Bar]`, to deal with such scenario, you would like to use `flatMap()`:
+In the imperative example, you can use the same piece of code if `transform()` is returning a nullable value as well. But let's consider the `Option` example, suppose `transform()` is returning an `Option[Bar]`, using `map()` method will result in `Option[Option[Bar]]` instead of `Option[Bar]`. To deal with such scenario, you would like to use `flatMap()`:
 
 ```scala
 def bar(optFoo: Option[Foo]): Option[Bar] =
@@ -93,9 +93,9 @@ As stated by its name, `flatMap` is returning a flattened result of `map()`.
 
 ## Composing Options
 
-Sometimes you're given several `Option`s, and you will need to construct a new `Option` only when all the given `Option`s contains a value.
+Sometimes you're given multiple `Option`s, and you need to construct a new `Option` that depending on the provided values.
 
-Using `map()` and `flatMap()` extensively can achieve your desired result, but they'll become deeply nested like [callback hell](http://callbackhell.com/) in JavaScript code. To relieve yourself from the hell, for-comprehension comes to rescue.
+Using `map()` and `flatMap()` extensively can achieve your desired result. Yet, they'll become deeply nested like [callback hell](http://callbackhell.com/) in JavaScript code. To relieve yourself from the hell, for-comprehension comes to rescue.
 
 ```scala
 val result = for {
@@ -109,7 +109,7 @@ In the above example, `result` will be `None` if any of `foo()` or `bar()` retur
 
 ## Java Compatibility
 
-In traditional Java applications, or we are required to use some Java-based libraries for our application development. Then we are forced to use the value `null` for further computations.
+Sometimes we need to use Java-based libraries for our application development. We will fall into some cases that we will be using `null` values provided by the Java-API.
 
 The `Option` data type has a constructor method for converting a possible `null` value to an `Option`:
 
@@ -118,7 +118,7 @@ val nullableValue = foo()
 val opt = Option(nullableValue)
 ```
 
-`opt` with either be `Some(value)` if `javaCall()` returns something, or it will be `None` if `javaCall()` returns `null`, and you may continue to work on your code with the powerful `Option` data type.
+`opt` will either be `Some(value)` if `javaCall()` returns something, or it will be `None` if `javaCall()` returns `null`, and you can continue working on your code with the powerful `Option` data type.
 
 ## <a name="final-notes"></a>Final Notes
 

@@ -2,5 +2,5 @@
 
 * [Introduction](README.md)
 * Data Types
-   * Options
+   * [Options](data-types/options.md)
 

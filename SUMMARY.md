@@ -1,6 +1,6 @@
-# Summary
+# Table of Contents
 
-* Summary
+* Introduction
 * [Data Types](data-types.md)
-   * Options
+   * [Options](data-types/options.md)
 

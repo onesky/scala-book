@@ -24,7 +24,7 @@ def foo(shouldReturnNone: Boolean): Option[Something] =
   else { Some(new Something()) }
 ```
 
-They looks no difference at all. However, with the `Option` container, we may manipulate the value inside without knowing `Something`'s existence. Or you could say, `Option` explicitly states the value requires the checking for emptiness.
+They looks no different at all. However, with the `Option` container, we may manipulate the value inside without knowing `Something`'s existence. Or you could say, `Option` explicitly states the value requires the checking for emptiness.
 
 If you would like to provide a default value to existing `Option`, you should use `getOrElse()` instead of pattern matching:
 

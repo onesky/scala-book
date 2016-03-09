@@ -32,6 +32,12 @@ If you would like to provide a default value to existing `Option`, you should us
 val value = optValue.getOrElse(default)
 ```
 
+Sometimes you're providing alternate `Option` value to an existing `Option`, and you can write:
+
+```scala
+val value = optValue.orElse(anotherOpt)
+```
+
 ## Conditional Execution
 
 In some cases, you may like to work on some nullable values, and explicit checking is needed to avoid runtime errors:
@@ -131,7 +137,8 @@ val opt = Option(nullableValue)
 ## <a name="final-notes"></a>Final Notes
 
 - Prefer `Option` over `null` for optional values.
-- Use `getOrElse()` to provide default values for missing data.
+- Use `getOrElse()` to provide default value for missing data.
+- Use `orElse()` to provide alternative value.
 - Use `foreach()` to execute side effects on an existing value.
 - Use pattern matching if you need branching.
 - Use `map()` and `flatMap()` to perform transformation.

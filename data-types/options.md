@@ -134,6 +134,8 @@ val opt = Option(nullableValue)
 
 `opt` will either be `Some(value)` if `javaCall()` returns something, or it will be `None` if `javaCall()` returns `null`, and you can continue working on your code with the powerful `Option` data type.
 
+**Reminder:** Please be careful about the use of `Option` and `Some`, `Some(null)` is very dangerous. :smile:
+
 ## <a name="final-notes"></a>Final Notes
 
 - Prefer `Option` over `null` for optional values.

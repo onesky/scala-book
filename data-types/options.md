@@ -147,6 +147,7 @@ val opt = Option(nullableValue)
 - Use for-comprehension to compose `Option` from `Option`s.
 - Use `Option(value)` constructor to wrap nullable values returned by Java-API.
 - Never use `get()` to retrieve value from `Option`.
+- Use `.lift()` to turn a partial function be one returning Option instead.
 
 ## Reference Materials
 

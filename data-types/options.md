@@ -107,9 +107,9 @@ As stated by its name, `flatMap` is returning a flattened result of `map()`.
 
 ## Composing Options
 
-Sometimes you're given multiple `Option`s, and you need to construct a new `Option` that depending on the provided values.
+Sometimes you're given multiple `Option`s, and you need to construct a new `Option` depending on the provided values.
 
-Using `map()` and `flatMap()` extensively can achieve your desired result. Yet, they'll become deeply nested like [callback hell](http://callbackhell.com/) in JavaScript code. To relieve yourself from the hell, for-comprehension comes to rescue.
+Using `map()` and `flatMap()` extensively can achieve so. Yet, they'll become deeply nested like [callback hell](http://callbackhell.com/) in JavaScript code. To relieve yourself from the hell, for-comprehension comes to rescue.
 
 ```scala
 val result = for {
@@ -119,11 +119,11 @@ val result = for {
 } yield (foo, bar, one) // Option[(Foo, Bar, Int)]
 ```
 
-In the above example, `result` will be `None` if any of `foo()` or `bar()` return `None`. And `result` will be `Some((foo, bar, 1))` if both of them return an `Option` contains a value inside.
+In the above example, `result` will be `None` if any of `foo()` or `bar()` return `None`. And `result` will be `Some((foo, bar, 1))` if both of them return an `Option` containing a value inside.
 
 ## Java Compatibility
 
-Sometimes we need to use Java-based libraries for our application development. We will fall into some cases that we will be using `null` values provided by the Java-API.
+Sometimes we need to use Java-based libraries for our application development, in which there are cases that we will be using `null` values provided by the Java-API.
 
 The `Option` data type has a constructor method for converting a possible `null` value to an `Option`:
 

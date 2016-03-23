@@ -151,4 +151,4 @@ val opt = Option(nullableValue)
 ## Reference Materials
 
 - [Effective Scala - Options](http://twitter.github.io/effectivescala/#Functional%20programming-Options)
-- [Scala's Option API](http://www.scala-lang.org/api/2.7.4/scala/Option.html)
+- [Scala's Option API](http://www.scala-lang.org/api/2.11.8/index.html#scala.Option)
